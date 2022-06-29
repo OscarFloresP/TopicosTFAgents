@@ -1,8 +1,6 @@
 from tkinter import *
 from tkinter import messagebox
-
-
-
+import gui_game as gg 
 
 class Interface:
     def __init__(self):
@@ -39,7 +37,7 @@ class Interface:
         self.peopleLabel.place(x=20,y=20)
         self.restaurantLabel.place(x=20,y=40)
         self.distributorLabel.place(x=20,y=60)
-        self.restartButton.place(x=80,y=100)
+        # self.restartButton.place(x=80,y=100)
 
     def run(self):
         people = self.peopleTextBox.get(1.0, "end-1c")
@@ -57,7 +55,11 @@ class Interface:
         self.__start__pygame__()
 
     def __start__pygame__(self):
+        game = gg.Game()
+        game.__conf_app_agent__(self.restaurants, self.people, self.distributors)
         print("Starting pygame...")
+        game.play()
+
 
     def __restart__(self):
         self.root.destroy()
